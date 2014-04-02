@@ -17,6 +17,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    Label.text = @"BWC";
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
