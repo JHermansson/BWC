@@ -1,0 +1,55 @@
+//
+//  forum.m
+//  BWC
+//
+//  Created by Johan Hermansson on 2014-04-14.
+//  Copyright (c) 2014 ___NULLPOINTEREXEPTION___. All rights reserved.
+//
+
+#import "forum.h"
+
+@interface forum ()
+
+@end
+
+@implementation forum
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    streamURL = [NSURL URLWithString:@"https://www.google.se"];
+    
+    
+    requestURL = [NSURLRequest requestWithURL:streamURL];
+    [webView loadRequest:requestURL];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
