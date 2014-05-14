@@ -270,13 +270,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geX-gP-hd5">
-                                <rect key="frame" x="29" y="407" width="98" height="30"/>
+                                <rect key="frame" x="29" y="407" width="103" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save Location">
+                                <state key="normal" title="Music ON/OFF">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveLocation:" destination="ptH-gA-KHw" eventType="touchUpInside" id="bAM-Va-Uzv"/>
+                                    <action selector="musicOnOff:" destination="ptH-gA-KHw" eventType="touchUpInside" id="ccm-wv-D4A"/>
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uk-No-qR4">
@@ -289,7 +289,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="m2a-dd-Ngx" id="oIe-6Z-I4i"/>
-                        <outlet property="save" destination="geX-gP-hd5" id="D0I-qh-3a7"/>
+                        <outlet property="music" destination="geX-gP-hd5" id="nk5-60-fTb"/>
                         <outlet property="webView" destination="4uk-No-qR4" id="go8-Ci-J4l"/>
                     </connections>
                 </viewController>
@@ -553,10 +553,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0YK-M1-jJ2"/>
-        <segue reference="12p-N1-ELs"/>
         <segue reference="6i0-e7-Qh9"/>
+        <segue reference="12p-N1-ELs"/>
         <segue reference="hxy-XY-0l7"/>
-        <segue reference="XHe-YF-0s5"/>
+        <segue reference="aTx-vq-tZK"/>
+        <segue reference="9jr-L2-5tQ"/>
     </inferredMetricsTieBreakers>
 </document>

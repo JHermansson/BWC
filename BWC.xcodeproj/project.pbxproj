@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0418C4E11923643900A6AD92 /* DeadCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0418C4E01923643900A6AD92 /* DeadCode.m */; };
 		041968B518EC1314001147D7 /* testframeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041968B418EC1314001147D7 /* testframeViewController.m */; };
 		041968B818ED7EDC001147D7 /* AboutFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 041968B718ED7EDC001147D7 /* AboutFrame.m */; };
 		041968BE18EDA019001147D7 /* LoadingLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 041968BD18EDA019001147D7 /* LoadingLogin.m */; };
 		041968C418EE1612001147D7 /* DriveFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 041968C318EE1612001147D7 /* DriveFrame.m */; };
 		041968C718EE1880001147D7 /* LoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 041968C618EE1880001147D7 /* LoggedIn.m */; };
 		041968CA18EE1949001147D7 /* WrongLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 041968C918EE1949001147D7 /* WrongLogin.m */; };
+		047C2F2019090FF6008A165A /* testSocketRocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 047C2F1F19090FF6008A165A /* testSocketRocket.m */; };
+		047C2F2219091182008A165A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 047C2F2119091182008A165A /* libicucore.dylib */; };
+		047C2F241909118F008A165A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047C2F231909118F008A165A /* CFNetwork.framework */; };
+		047C2F261909119A008A165A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047C2F251909119A008A165A /* Security.framework */; };
+		047C2F2919091382008A165A /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 047C2F2819091382008A165A /* SRWebSocket.m */; };
 		0491B7EC18F7FD2800E718FE /* mapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0491B7EB18F7FD2800E718FE /* mapView.m */; };
 		0491B7F418FACEA900E718FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0491B7F318FACEA900E718FE /* MapKit.framework */; };
 		0491B7F618FACEB400E718FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0491B7F518FACEB400E718FE /* CoreLocation.framework */; };
@@ -48,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0418C4DF1923643900A6AD92 /* DeadCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeadCode.h; sourceTree = "<group>"; };
+		0418C4E01923643900A6AD92 /* DeadCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeadCode.m; sourceTree = "<group>"; };
 		041968B318EC1314001147D7 /* testframeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testframeViewController.h; sourceTree = "<group>"; };
 		041968B418EC1314001147D7 /* testframeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testframeViewController.m; sourceTree = "<group>"; };
 		041968B618ED7EDC001147D7 /* AboutFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutFrame.h; sourceTree = "<group>"; };
@@ -60,6 +68,14 @@
 		041968C618EE1880001147D7 /* LoggedIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggedIn.m; sourceTree = "<group>"; };
 		041968C818EE1949001147D7 /* WrongLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WrongLogin.h; sourceTree = "<group>"; };
 		041968C918EE1949001147D7 /* WrongLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WrongLogin.m; sourceTree = "<group>"; };
+		047C2F1E19090FF6008A165A /* testSocketRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testSocketRocket.h; sourceTree = "<group>"; };
+		047C2F1F19090FF6008A165A /* testSocketRocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testSocketRocket.m; sourceTree = "<group>"; };
+		047C2F2119091182008A165A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		047C2F231909118F008A165A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		047C2F251909119A008A165A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		047C2F2719091382008A165A /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		047C2F2819091382008A165A /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		047C2F2A19091396008A165A /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		0491B7EA18F7FD2800E718FE /* mapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapView.h; sourceTree = "<group>"; };
 		0491B7EB18F7FD2800E718FE /* mapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapView.m; sourceTree = "<group>"; };
 		0491B7F318FACEA900E718FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -99,6 +115,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047C2F261909119A008A165A /* Security.framework in Frameworks */,
+				047C2F241909118F008A165A /* CFNetwork.framework in Frameworks */,
+				047C2F2219091182008A165A /* libicucore.dylib in Frameworks */,
 				0491B7F618FACEB400E718FE /* CoreLocation.framework in Frameworks */,
 				0491B7F418FACEA900E718FE /* MapKit.framework in Frameworks */,
 				04C8115018EC0AAE00D82C13 /* CoreGraphics.framework in Frameworks */,
@@ -142,6 +161,9 @@
 		04C8114C18EC0AAE00D82C13 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				047C2F251909119A008A165A /* Security.framework */,
+				047C2F231909118F008A165A /* CFNetwork.framework */,
+				047C2F2119091182008A165A /* libicucore.dylib */,
 				0491B7F518FACEB400E718FE /* CoreLocation.framework */,
 				0491B7F318FACEA900E718FE /* MapKit.framework */,
 				04C8114D18EC0AAE00D82C13 /* Foundation.framework */,
@@ -157,6 +179,8 @@
 			children = (
 				04C8115C18EC0AAE00D82C13 /* AppDelegate.h */,
 				04C8115D18EC0AAE00D82C13 /* AppDelegate.m */,
+				0418C4DF1923643900A6AD92 /* DeadCode.h */,
+				0418C4E01923643900A6AD92 /* DeadCode.m */,
 				04C8115F18EC0AAE00D82C13 /* Main_iPhone.storyboard */,
 				04C8116218EC0AAE00D82C13 /* Main_iPad.storyboard */,
 				04C8116518EC0AAE00D82C13 /* ViewController.h */,
@@ -165,6 +189,8 @@
 				04C8115418EC0AAE00D82C13 /* Supporting Files */,
 				041968B318EC1314001147D7 /* testframeViewController.h */,
 				041968B418EC1314001147D7 /* testframeViewController.m */,
+				047C2F1E19090FF6008A165A /* testSocketRocket.h */,
+				047C2F1F19090FF6008A165A /* testSocketRocket.m */,
 				041968C518EE1880001147D7 /* LoggedIn.h */,
 				041968C618EE1880001147D7 /* LoggedIn.m */,
 				0491B7FD18FC070300E718FE /* forum.h */,
@@ -185,6 +211,8 @@
 				041968C318EE1612001147D7 /* DriveFrame.m */,
 				041968B618ED7EDC001147D7 /* AboutFrame.h */,
 				041968B718ED7EDC001147D7 /* AboutFrame.m */,
+				047C2F2719091382008A165A /* SRWebSocket.h */,
+				047C2F2819091382008A165A /* SRWebSocket.m */,
 			);
 			path = BWC;
 			sourceTree = "<group>";
@@ -192,6 +220,7 @@
 		04C8115418EC0AAE00D82C13 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				047C2F2A19091396008A165A /* SocketRocket-Prefix.pch */,
 				04C8115518EC0AAE00D82C13 /* BWC-Info.plist */,
 				04C8115618EC0AAE00D82C13 /* InfoPlist.strings */,
 				04C8115918EC0AAE00D82C13 /* main.m */,
@@ -318,8 +347,10 @@
 			files = (
 				041968CA18EE1949001147D7 /* WrongLogin.m in Sources */,
 				0491B7F918FAD87D00E718FE /* sockets.m in Sources */,
+				0418C4E11923643900A6AD92 /* DeadCode.m in Sources */,
 				041968C418EE1612001147D7 /* DriveFrame.m in Sources */,
 				0491B7FF18FC070300E718FE /* forum.m in Sources */,
+				047C2F2919091382008A165A /* SRWebSocket.m in Sources */,
 				04C8116718EC0AAE00D82C13 /* ViewController.m in Sources */,
 				04C8115E18EC0AAE00D82C13 /* AppDelegate.m in Sources */,
 				041968B518EC1314001147D7 /* testframeViewController.m in Sources */,
@@ -330,6 +361,7 @@
 				041968C718EE1880001147D7 /* LoggedIn.m in Sources */,
 				0491B80218FD88DF00E718FE /* socketsTest.m in Sources */,
 				041968B818ED7EDC001147D7 /* AboutFrame.m in Sources */,
+				047C2F2019090FF6008A165A /* testSocketRocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

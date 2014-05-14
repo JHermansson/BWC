@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "SRWebSocket.h"
 
-@interface DriveFrame : UIViewController <NSStreamDelegate>{
+@interface DriveFrame : UIViewController <NSStreamDelegate, SRWebSocketDelegate>{
     NSInputStream *inputStream;
     NSOutputStream *outputStream;
     IBOutlet UILabel * label;
@@ -19,11 +20,12 @@
     CLLocationManager *lm;
     CLLocation *location;
     int locationtaps;
-    IBOutlet UIButton * save;
+    IBOutlet UIButton * music;
     NSTimer * forwardTimer;
     NSTimer * leftTimer;
     NSTimer * rightTimer;
     NSTimer * reverseTimer;
+    SRWebSocket * webSocket;
     
 }
 
@@ -56,8 +58,9 @@
 - (void)reverseGo;
 
 - (IBAction)honk:(UIButton *)sender;
+- (IBAction)musicOnOff:(UIButton *)sender;
 
-- (IBAction)saveLocation:(UIButton *)sender;
+
 
 
 
