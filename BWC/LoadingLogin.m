@@ -34,7 +34,7 @@
     NSString *username=[[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     NSString *password=[[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
 
-    if ([username isEqualToString:@"1"] && [password isEqualToString:@"2"]){
+    if ([username isEqualToString:@"admin"] && [password isEqualToString:@"admin"]){
         [rl sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
     else{

@@ -89,9 +89,9 @@
 
 
 - (IBAction)forwardOn:(UIButton *)sender {
-    forwardTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
+    forwardTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
     if (forwardTimer == nil) {
-        forwardTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
+        forwardTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -107,9 +107,9 @@
 }
 
 - (IBAction)leftOn:(UIButton *)sender {
-    leftTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
+    leftTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
     if (leftTimer == nil) {
-        leftTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
+        leftTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -126,9 +126,9 @@
 }
 
 - (IBAction)rightOn:(UIButton *)sender {
-    rightTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
+    rightTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
     if (rightTimer == nil) {
-        rightTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
+        rightTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -145,9 +145,9 @@
 }
 
 - (IBAction)reverseOn:(UIButton *)sender {
-    reverseTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
+    reverseTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
     if (reverseTimer == nil) {
-        reverseTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
+        reverseTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -157,8 +157,8 @@
 }
 
 - (void)reverseGo{
-    NSLog(@"Reverse");
-    NSString * response = @"reverse";
+    NSLog(@"Back");
+    NSString * response = @"back";
     [webSocket send:response];
     
 }
@@ -179,7 +179,7 @@
     webSocket.delegate = nil;
     webSocket = nil;
     
-    NSString *urlString = @"ws://localhost:50007";
+    NSString *urlString = @"ws://192.168.2.11:50007";
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     newWebSocket.delegate = self;
     
@@ -189,7 +189,7 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
     webSocket = newWebSocket;
-    [webSocket send:[NSString stringWithFormat:@"Hello from %@", [UIDevice currentDevice].name]];
+    //[webSocket send:[NSString stringWithFormat:@"Hello from %@", [UIDevice currentDevice].name]];
     NSLog(@"Connected");
 }
 
