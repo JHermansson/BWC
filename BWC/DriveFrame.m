@@ -33,6 +33,7 @@
     
     label.text = @"Drive View";
     streamURL = [NSURL URLWithString:@"http://new.livestream.com/accounts/3796876/events/2136694/player?width=425&height=240&autoPlay=true&mute=false%22%20width=%22425%22%20height=%22240%22%20frameborder=%220%22%20scrolling=%22no%22"];
+    
 
      webView.allowsInlineMediaPlayback=YES;
     requestURL = [NSURLRequest requestWithURL:streamURL];
@@ -179,7 +180,7 @@
     webSocket.delegate = nil;
     webSocket = nil;
     
-    NSString *urlString = @"ws://192.168.2.11:50007";
+    NSString *urlString = @"ws://192.168.2.5:50007";
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     newWebSocket.delegate = self;
     
