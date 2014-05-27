@@ -13,6 +13,11 @@
     CLLocationManager *lm;
     CLLocation *location;
     int locationtaps;
+    NSInputStream * inputStream;
+    NSOutputStream * outputStream;
+    IBOutlet UIWebView * webView;
+    NSURL * streamURL;
+    NSURLRequest * requestURL;
 }
 
 @property (strong, nonatomic) NSString *userLatitude;

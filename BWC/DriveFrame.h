@@ -11,27 +11,29 @@
 #import "SRWebSocket.h"
 
 @interface DriveFrame : UIViewController <NSStreamDelegate, SRWebSocketDelegate>{
-    NSInputStream *inputStream;
-    NSOutputStream *outputStream;
     IBOutlet UILabel * label;
-    IBOutlet UIWebView * webView;
-    NSURL * streamURL;
-    NSURLRequest * requestURL;
-    CLLocationManager *lm;
-    CLLocation *location;
-    int locationtaps;
     IBOutlet UIButton * music;
     NSTimer * forwardTimer;
     NSTimer * leftTimer;
     NSTimer * rightTimer;
     NSTimer * reverseTimer;
     SRWebSocket * webSocket;
+    NSTimer * tempTimer;
+    
+    NSString * Ip;
+    
+    IBOutlet UILabel * tempLabel;
+    IBOutlet UILabel * tempLabel2;
+    int seeTemp;
     
 }
 
 @property (strong, nonatomic) NSString *userLatitude;
 @property (strong, nonatomic) NSString *userLongitude;
 
+- (void)startTempTimer;
+
+- (void)getTemp;
 
 - (IBAction)forwardOn:(UIButton *)sender;
 

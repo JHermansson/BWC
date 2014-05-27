@@ -27,6 +27,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    streamURL = [NSURL URLWithString:@"http://new.livestream.com/accounts/3796876/events/2136694/player?width=425&height=240&autoPlay=true&mute=false%22%20width=%22425%22%20height=%22240%22%20frameborder=%220%22%20scrolling=%22no%22"];
+    
+    
+    webView.allowsInlineMediaPlayback=YES;
+    requestURL = [NSURLRequest requestWithURL:streamURL];
+    [webView loadRequest:requestURL];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,8 +83,90 @@
         
         
     }
+  
+}
+
+- (void)initNetworkCommunication{
+    CFReadStreamRef readStream;
+    CFWriteStreamRef writeStream;
+    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"localhost", 80, &readStream, &writeStream);
+    inputStream = (__bridge_transfer NSInputStream *)readStream;
+    outputStream = (__bridge_transfer NSOutputStream *)writeStream;
+    
+    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
+    [outputStream open];
+    
+    // Flip bytes for network order prior to transmission
+    //    uint32_t length = (uint32_t)htonl([_rawZombie length]);
+    uint32_t messageType = (uint32_t)htonl(1);
+    
+    // Keeping track of bytes written for debug purposes...
+    NSInteger bytesWritten;
+    //    bytesWritten = [outputStream write:(uint8_t *)&length maxLength:4];
+    NSLog(@"Wrote %ld bytes to the stream", (long)bytesWritten);
+    bytesWritten = [outputStream write:(uint8_t *)&messageType maxLength:4];
+    NSLog(@"Wrote %ld bytes to the stream", bytesWritten);
+    
+    // Write contents of protobuf object serialized as string, loaded into NSData pointer
+    //  bytesWritten = [outputStream write:(uint8_t *)[_rawZombie bytes] maxLength:[_rawZombie length]];
+    NSLog(@"Wrote %ld bytes to the stream", bytesWritten);
+    
+    [outputStream close];
+
     
 }
+- (void) goForward {
+    
+	NSString *response  = [NSString stringWithFormat:@"Forward"];
+	NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+	[outputStream write:[data bytes] maxLength:[data length]];
+    
+}
+
+- (void) goleft {
+    
+	NSString *response  = [NSString stringWithFormat:@"Forward"];
+	NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+	[outputStream write:[data bytes] maxLength:[data length]];
+    
+}
+- (void) goRight {
+    
+	NSString *response  = [NSString stringWithFormat:@"Forward"];
+	NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+	[outputStream write:[data bytes] maxLength:[data length]];
+    
+}
+- (void) goReverse {
+    
+	NSString *response  = [NSString stringWithFormat:@"Forward"];
+	NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+	[outputStream write:[data bytes] maxLength:[data length]];
+    
+}
+
+- (void)sendSocket{
+    NSString * response = @"forward";
+    NSData * data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+    [outputStream write:[data bytes] maxLength:[data length]];
+    
+}
+- (void)connect{
+    NSString *url = @"https://example.com:9999/";
+    NSURL * URL = [NSURL URLWithString:url];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:URL];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection self];
+}
+
 
 /*
 #pragma mark - Navigation

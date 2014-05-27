@@ -32,14 +32,13 @@
     // Do any additional setup after loading the view.
     
     label.text = @"Drive View";
-    streamURL = [NSURL URLWithString:@"http://new.livestream.com/accounts/3796876/events/2136694/player?width=425&height=240&autoPlay=true&mute=false%22%20width=%22425%22%20height=%22240%22%20frameborder=%220%22%20scrolling=%22no%22"];
+    seeTemp = 0;
     
-
-     webView.allowsInlineMediaPlayback=YES;
-    requestURL = [NSURLRequest requestWithURL:streamURL];
-    [webView loadRequest:requestURL];
+    tempLabel.text = @"Temperature";
+    tempLabel2.text = @"- degrees Celsius";
+    tempTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(getTemp) userInfo:nil repeats:YES];
     
-    locationtaps = 0;
+    
     
     
     [self connectWebSocket];
@@ -66,33 +65,23 @@
 }
 */
 
+- (void)startTempTimer{
+    
+}
 
-- (void)initNetworkCommunication {
-    CFReadStreamRef readStream;
-    CFWriteStreamRef writeStream;
-    CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"localhost", 50007, &readStream, &writeStream);
-    inputStream = (NSInputStream *)CFBridgingRelease(readStream);
-    outputStream = (NSOutputStream *)CFBridgingRelease(writeStream);
+- (void)getTemp{
+    NSLog(@"Temp");
+    NSString * response = @"GetTemp";
+    [webSocket send:response];
+    seeTemp = 1;
     
-    [inputStream setDelegate:self];
-    [outputStream setDelegate:self];
-    
-    [inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    
-    [inputStream open];
-    [outputStream open];
 }
 
 
-
-
-
-
 - (IBAction)forwardOn:(UIButton *)sender {
-    forwardTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
+    forwardTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
     if (forwardTimer == nil) {
-        forwardTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
+        forwardTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -108,9 +97,9 @@
 }
 
 - (IBAction)leftOn:(UIButton *)sender {
-    leftTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
+    leftTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
     if (leftTimer == nil) {
-        leftTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
+        leftTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -127,9 +116,9 @@
 }
 
 - (IBAction)rightOn:(UIButton *)sender {
-    rightTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
+    rightTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
     if (rightTimer == nil) {
-        rightTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
+        rightTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -146,9 +135,9 @@
 }
 
 - (IBAction)reverseOn:(UIButton *)sender {
-    reverseTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
+    reverseTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
     if (reverseTimer == nil) {
-        reverseTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
+        reverseTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
     }
 }
 
@@ -179,13 +168,17 @@
 - (void)connectWebSocket {
     webSocket.delegate = nil;
     webSocket = nil;
+    Ip = [[NSUserDefaults standardUserDefaults] valueForKey:@"IP"];
     
-    NSString *urlString = @"ws://192.168.2.5:50007";
+    NSLog(@"%@",Ip);
+    
+    NSString *urlString = [NSString stringWithFormat: @"ws://%@:50007",Ip];
     SRWebSocket *newWebSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     newWebSocket.delegate = self;
     
     [newWebSocket open];
     NSLog(@"Connected");
+    NSLog(@"%@", urlString);
 }
 
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
@@ -204,6 +197,11 @@
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
     NSLog(@"Message recived: %@",message);
+    
+    if (seeTemp == 1) {
+        tempLabel2.text = [NSString stringWithFormat: @"%@ degrees Celsius", message];
+        seeTemp = 0;
+    }
 }
 
 
