@@ -77,7 +77,6 @@
     
 }
 
-
 - (IBAction)forwardOn:(UIButton *)sender {
     forwardTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
     if (forwardTimer == nil) {
