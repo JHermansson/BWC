@@ -20,7 +20,9 @@
     NSURLRequest * requestURL;
 }
 
+
 @property (strong, nonatomic) NSString *userLatitude;
+
 @property (strong, nonatomic) NSString *userLongitude;
 
 - (IBAction)saveLocation:(UIButton *)sender;
