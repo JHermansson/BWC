@@ -28,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //set labels, size and text
     LabelAbout.text = @"BWC";
     versionLabel.font = [UIFont fontWithName:@"Arial" size:8];
     versionLabel.text = @"Version 1.0";

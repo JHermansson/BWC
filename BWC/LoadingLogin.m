@@ -31,6 +31,9 @@
 {
     [super viewDidAppear:animated];
     // Do any additional setup after loading the view.
+    
+    
+    //get the saved username and password and checks if it is correct or not, and sends the user to the right page.
     NSString *username=[[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     NSString *password=[[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
 

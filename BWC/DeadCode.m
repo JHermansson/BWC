@@ -28,9 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //get stream url and starts the stream in the webview
     streamURL = [NSURL URLWithString:@"http://new.livestream.com/accounts/3796876/events/2136694/player?width=425&height=240&autoPlay=true&mute=false%22%20width=%22425%22%20height=%22240%22%20frameborder=%220%22%20scrolling=%22no%22"];
-    
-    
     webView.allowsInlineMediaPlayback=YES;
     requestURL = [NSURLRequest requestWithURL:streamURL];
     [webView loadRequest:requestURL];
@@ -42,7 +41,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+//saves the current location
 - (IBAction)saveLocation:(UIButton *)sender {
     
     
@@ -86,6 +85,7 @@
   
 }
 
+//starts the connection to the server(regular sockets)
 - (void)initNetworkCommunication{
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
@@ -117,6 +117,8 @@
 
     
 }
+
+//send the message forward to the server
 - (void) goForward {
     
 	NSString *response  = [NSString stringWithFormat:@"Forward"];
@@ -125,6 +127,7 @@
     
 }
 
+//send the message left to the server
 - (void) goleft {
     
 	NSString *response  = [NSString stringWithFormat:@"Forward"];
@@ -132,6 +135,8 @@
 	[outputStream write:[data bytes] maxLength:[data length]];
     
 }
+
+//send the message right to the server
 - (void) goRight {
     
 	NSString *response  = [NSString stringWithFormat:@"Forward"];
@@ -139,6 +144,8 @@
 	[outputStream write:[data bytes] maxLength:[data length]];
     
 }
+
+//send the message reverse to the server
 - (void) goReverse {
     
 	NSString *response  = [NSString stringWithFormat:@"Forward"];
@@ -147,12 +154,15 @@
     
 }
 
+//send socket to the server
 - (void)sendSocket{
     NSString * response = @"forward";
     NSData * data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
     [outputStream write:[data bytes] maxLength:[data length]];
     
 }
+
+// connect to the server
 - (void)connect{
     NSString *url = @"https://example.com:9999/";
     NSURL * URL = [NSURL URLWithString:url];

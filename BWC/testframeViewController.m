@@ -30,14 +30,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.UsernameTF.delegate = self;
     self.PasswordTF.delegate = self;
+    
     usernameL.text = @"Username";
     passwordL.text = @"Password";
     
     LabelLogin.text = @"Login";
 }
 
+
+//do that the keyboard that is popping up when u go to a textfield will disapear if the return-button is pressed
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
@@ -60,6 +64,7 @@
 }
 */
 
+// saves the username and the password from the textfields when the login-button is pressed
 - (IBAction)login:(UIButton *)sender {
     username = UsernameTF1.text;
     password = PasswordTF1.text;

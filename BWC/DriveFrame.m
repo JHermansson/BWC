@@ -31,6 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //sets the labels and start the tempreature-Timer
+    
     label.text = @"Drive View";
     seeTemp = 0;
     
@@ -69,6 +71,7 @@
     
 }
 
+//get the temperature
 - (void)getTemp{
     NSLog(@"Temp");
     NSString * response = @"GetTemp";
@@ -77,6 +80,7 @@
     
 }
 
+//start the forward-timer the the forwardbutton is pressed
 - (IBAction)forwardOn:(UIButton *)sender {
     forwardTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(forwardGo) userInfo:nil repeats:YES];
     if (forwardTimer == nil) {
@@ -84,17 +88,20 @@
     }
 }
 
+//stops the forward-timer when the forwardbutton is not longer pressed down
 - (IBAction)forwardRelease:(UIButton *)sender {
     [forwardTimer invalidate];
     forwardTimer = nil;
 }
 
+//sends the forward message to the server
 - (void)forwardGo{
     NSLog(@"Forward");
     NSString * response = @"forward";
     [webSocket send:response];
 }
 
+//start the left-timer the the forwardbutton is pressed
 - (IBAction)leftOn:(UIButton *)sender {
     leftTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(leftGo) userInfo:nil repeats:YES];
     if (leftTimer == nil) {
@@ -102,11 +109,13 @@
     }
 }
 
+//stops the left-timer when the forwardbutton is not longer pressed down
 - (IBAction)leftRelease:(UIButton *)sender {
     [leftTimer invalidate];
     leftTimer = nil;
 }
 
+//sends the left message to the server
 - (void)leftGo{
     NSLog(@"Left");
     NSString * response = @"left";
@@ -114,6 +123,7 @@
     
 }
 
+//start the right-timer the the forwardbutton is pressed
 - (IBAction)rightOn:(UIButton *)sender {
     rightTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(rightGo) userInfo:nil repeats:YES];
     if (rightTimer == nil) {
@@ -121,11 +131,13 @@
     }
 }
 
+//stops the right-timer when the forwardbutton is not longer pressed down
 - (IBAction)rightRelease:(UIButton *)sender {
     [rightTimer invalidate];
     rightTimer = nil;
 }
 
+//sends the right message to the server
 - (void)rightGo{
     NSLog(@"Right");
     NSString * response = @"right";
@@ -133,6 +145,7 @@
     
 }
 
+//start the reverse-timer the the forwardbutton is pressed
 - (IBAction)reverseOn:(UIButton *)sender {
     reverseTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(reverseGo) userInfo:nil repeats:YES];
     if (reverseTimer == nil) {
@@ -140,11 +153,13 @@
     }
 }
 
+//stops the reverse-timer when the forwardbutton is not longer pressed down
 - (IBAction)reverseRelease:(UIButton *)sender {
     [reverseTimer invalidate];
     reverseTimer = nil;
 }
 
+//sends the back message to the server
 - (void)reverseGo{
     NSLog(@"Back");
     NSString * response = @"back";
@@ -152,18 +167,21 @@
     
 }
 
+//sends the honk message to the server
 - (IBAction)honk:(UIButton *)sender {
     NSLog(@"Honk");
     NSString * response = @"honk";
     [webSocket send:response];
 }
 
+//sends the music message to the server
 - (IBAction)musicOnOff:(UIButton *)sender {
     NSLog(@"Music");
     NSString * response = @"music";
     [webSocket send:response];
 }
 
+//connect to the server with websocket
 - (void)connectWebSocket {
     webSocket.delegate = nil;
     webSocket = nil;
@@ -180,20 +198,24 @@
     NSLog(@"%@", urlString);
 }
 
+// when the websocket opens it says that you are connected
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
     webSocket = newWebSocket;
     //[webSocket send:[NSString stringWithFormat:@"Hello from %@", [UIDevice currentDevice].name]];
     NSLog(@"Connected");
 }
 
+//if the websocket get any error it tries to connect again
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
     [self connectWebSocket];
 }
 
+//if the websocket get closed it tries to connect again
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     [self connectWebSocket];
 }
 
+//print the message from the server when it receive any message
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
     NSLog(@"Message recived: %@",message);
     

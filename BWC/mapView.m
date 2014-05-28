@@ -30,6 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    // open the map in the MKMapView and zoom in and center the user location
+    
     _mapView.delegate = self;
     label.text = @"Map View";
     _mapView.showsUserLocation = YES;
@@ -50,6 +52,8 @@
     
 
 }
+
+// Do annoationpoint on the map
 - (void)viewDidAppear:(BOOL)animated{
     CLLocationCoordinate2D anyLocation;
     anyLocation.latitude = 51.49795;
